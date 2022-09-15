@@ -1,0 +1,6 @@
+module Pods_Sejong {
+  umbrella header "Pods-Sejong-umbrella.h"
+
+  export *
+  module * { export * }
+}
