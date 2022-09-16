@@ -1,0 +1,6 @@
+module Pods_Sejong_SejongTests {
+  umbrella header "Pods-Sejong-SejongTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
