@@ -12,7 +12,7 @@ public interface ReservationRepository {
 
     Optional<Reservation> findById(Long id);
     Optional<Reservation> findByTime(LocalDate date, int time);
-    Optional<Reservation> findByStudentId(int studentId);
+    List<Reservation> findByStudentId(int studentId);
 
     List<Reservation> findAll();
 

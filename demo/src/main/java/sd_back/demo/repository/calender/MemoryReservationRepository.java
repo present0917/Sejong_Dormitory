@@ -4,6 +4,8 @@ import sd_back.demo.domain.Reservation;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class MemoryReservationRepository implements ReservationRepository {
@@ -37,13 +39,11 @@ public class MemoryReservationRepository implements ReservationRepository {
 
 
     @Override
-    public Optional<Reservation> findByStudentId(int studentId) {
+    public List<Reservation> findByStudentId(int studentId) {
 
         return store.values().stream()
                 .filter(reservation -> Objects.equals(reservation.getStudentId(), studentId))
-                .findAny();
-
-        //return null;
+                .collect(Collectors.toList());
     }
 
     @Override
