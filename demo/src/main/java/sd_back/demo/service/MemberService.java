@@ -31,8 +31,14 @@ public class MemberService {
             return null;
         }
     }
-    public void join(Long studentId, String name, String password){ //회원가입
+    public Member join(Long studentId, String name, String password){ //회원가입
         Member member = new Member(studentId,name,password);
-        memberRepository.save(member);
+        Optional<Member> findMember = memberRepository.findByStudentId(studentId);
+        if (findMember.isEmpty()) {
+            memberRepository.save(member);
+            return member;
+        } else {
+            return null;
+        }
     }
 }
