@@ -1,15 +1,10 @@
 package sd_back.demo.service;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.JpaMemberRepository;
-import sd_back.demo.repository.MemberRepository;
-import sd_back.demo.repository.MemoryMemberRepository;
+import sd_back.demo.repository.member.JpaMemberRepository;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 

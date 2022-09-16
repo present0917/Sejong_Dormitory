@@ -3,8 +3,7 @@ package sd_back.demo.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.JpaMemberRepository;
-import sd_back.demo.repository.MemoryMemberRepository;
+import sd_back.demo.repository.member.JpaMemberRepository;
 
 import java.util.Optional;
 

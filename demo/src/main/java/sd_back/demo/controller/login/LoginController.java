@@ -8,13 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.JpaMemberRepository;
 import sd_back.demo.service.MemberService;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Slf4j

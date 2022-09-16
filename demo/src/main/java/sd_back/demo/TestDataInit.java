@@ -2,7 +2,7 @@ package sd_back.demo;
 
 import lombok.RequiredArgsConstructor;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.MemberRepository;
+import sd_back.demo.repository.member.MemberRepository;
 
 import javax.annotation.PostConstruct;
 

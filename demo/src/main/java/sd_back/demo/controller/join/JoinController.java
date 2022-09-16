@@ -8,10 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.JpaMemberRepository;
 import sd_back.demo.service.MemberService;
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Slf4j
 @Controller
