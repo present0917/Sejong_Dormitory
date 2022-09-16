@@ -38,6 +38,17 @@ class MemoryReservationRepositoryTest {
     }
 
     @Test
+    void findByTime(){
+        LocalDate date = LocalDate.of(2022, 9, 16);
+        Reservation reservation = new Reservation(date, 11, true, 18011550);
+        Reservation reservation2 = new Reservation(date, 15, true, 18011552);
+        reservationRepository.save(reservation);
+        reservationRepository.save(reservation2);
+
+        assertThat(reservationRepository.findByTime(date, 11).get()).isEqualTo(reservation);
+    }
+
+    @Test
     void findByStudentId() {
         LocalDate date = LocalDate.of(2022, 9, 16);
         Reservation reservation = new Reservation(date, 15, true, 18011552);

@@ -2,6 +2,7 @@ package sd_back.demo.repository.calender;
 
 import sd_back.demo.domain.Reservation;
 
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -25,6 +26,15 @@ public class MemoryReservationRepository implements ReservationRepository {
 
         return Optional.ofNullable(store.get(id));
     }
+
+    @Override
+    public Optional<Reservation> findByTime(LocalDate date, int time) {
+
+        return store.values().stream()
+                .filter(reservation -> Objects.equals(reservation.getDate(), date) && Objects.equals(reservation.getTime(), time))
+                .findAny();
+    }
+
 
     @Override
     public Optional<Reservation> findByStudentId(int studentId) {
