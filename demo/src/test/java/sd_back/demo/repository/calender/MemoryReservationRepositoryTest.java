@@ -53,7 +53,8 @@ class MemoryReservationRepositoryTest {
         LocalDate date = LocalDate.of(2022, 9, 16);
         Reservation reservation = new Reservation(date, 15, true, 18011552);
         reservationRepository.save(reservation);
-        assertThat(reservationRepository.findByStudentId(reservation.getStudentId()).get()).isEqualTo(reservation);
+        List<Reservation> list = reservationRepository.findByStudentId(reservation.getStudentId());
+        assertThat(list.get(0)).isEqualTo(reservation);
     }
 
     @Test

@@ -1,13 +1,13 @@
 package sd_back.demo.repository.calender;
 
+import org.springframework.stereotype.Repository;
 import sd_back.demo.domain.Reservation;
 
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-
+@Repository
 public class MemoryReservationRepository implements ReservationRepository {
 
     private long num = 0L;
@@ -21,6 +21,13 @@ public class MemoryReservationRepository implements ReservationRepository {
         store.put(reservation.getId(), reservation);
 
         return reservation;
+    }
+
+    @Override
+    public void update(Long id, LocalDate date, int time) {
+        Reservation reservation = findById(id).orElseThrow(() -> new NoSuchElementException("해당하는 예약이 없습니다"));
+        reservation.setDate(date);
+        reservation.setTime(time);
     }
 
     @Override
