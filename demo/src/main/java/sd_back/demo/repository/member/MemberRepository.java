@@ -1,4 +1,4 @@
-package sd_back.demo.repository;
+package sd_back.demo.repository.member;
 
 import sd_back.demo.domain.Member;
 

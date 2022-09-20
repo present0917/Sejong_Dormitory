@@ -3,11 +3,7 @@ package sd_back.demo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import sd_back.demo.domain.Member;
-import sd_back.demo.repository.MemberRepository;
-import sd_back.demo.repository.MemoryMemberRepository;
-import sd_back.demo.service.MemberService;
-
-import static org.junit.jupiter.api.Assertions.*;
+import sd_back.demo.repository.member.MemoryMemberRepository;
 
 
 class TestDataInitTest {
