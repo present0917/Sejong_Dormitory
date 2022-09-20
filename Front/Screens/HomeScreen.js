@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from "axios";
+import React from "react";
 import {
   View,
   Text,
@@ -7,12 +8,28 @@ import {
   Image,
   TextInput,
   SafeAreaView,
-} from 'react-native';
-import SejongLogo from '../assets/icons/SejongLogo.png';
+  useState,
+  Alert,
+} from "react-native";
+import SejongLogo from "../assets/icons/SejongLogo.png";
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [ID, PutID] = React.useState(null);
   const [PWD, PutPWD] = React.useState(null);
+
+  const [id, setId] = useState("");
+  const [password, setpassword] = useState("");
+
+  function login() {
+    if (id.trim() === "") {
+      Alert.alert("아이디를 입력해주세요");
+    } else if (password.trim() === "") {
+      Alert.alert("비밀번호를 입력해주세요");
+    }
+    else{
+      axios.post("http:http://localhost:8080/join", null,{params: {id:id, pwd:password}}).then(function())
+    }
+  }
   return (
     <View style={Styles.home}>
       <Image source={SejongLogo} style={Styles.SejongHomeLogo} />
@@ -42,17 +59,20 @@ const HomeScreen = ({navigation}) => {
       </SafeAreaView>
       <TouchableOpacity
         style={Styles.LoginBox}
-        onPress={() => navigation.navigate('Bottom_Stack')}>
+        onPress={() => navigation.navigate("Bottom_Stack")}
+      >
         <Text style={Styles.LoginText}>로그인</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={Styles.RegisterBox}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => navigation.navigate("Register")}
+      >
         <Text style={Styles.RegisterText}>회원가입</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={Styles.FindBox}
-        onPress={() => navigation.navigate('Find')}>
+        onPress={() => navigation.navigate("Find")}
+      >
         <Text style={Styles.FindText}>아이디 / 비밀번호 찾기</Text>
       </TouchableOpacity>
     </View>
@@ -61,53 +81,53 @@ const HomeScreen = ({navigation}) => {
 
 const Styles = StyleSheet.create({
   LoginBox: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     width: 90,
     height: 36,
     marginTop: 15,
     marginLeft: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 1,
     borderRadius: 10,
   },
   // Login 텍스트 디자인
   LoginText: {
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 17,
     marginTop: 3,
   },
   // 아이디 비밀번호 찾기
   FindBox: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 20,
   },
   FindText: {
-    color: 'white',
+    color: "white",
     fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
   },
   // 회원가입
   RegisterBox: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     width: 90,
     height: 36,
     marginTop: 5,
     marginLeft: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 1,
     borderRadius: 10,
   },
   RegisterText: {
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 17,
     marginTop: 3,
   },
   home: {
     flex: 1,
-    backgroundColor: '#BB1029',
+    backgroundColor: "#BB1029",
   },
   SejongHomeLogo: {
     width: 202,
@@ -120,46 +140,46 @@ const Styles = StyleSheet.create({
     marginTop: 15,
   },
   Id: {
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 14,
-    color: 'white',
+    color: "white",
     marginLeft: 2,
   },
   input1: {
     height: 35,
     borderWidth: 1,
     padding: 10,
-    color: 'black',
+    color: "black",
     borderRadius: 10,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 14,
     width: 270,
     height: 55,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   input2: {
     height: 35,
     //  marginLeft: 60,
     borderWidth: 1,
     padding: 10,
-    color: 'black',
+    color: "black",
     borderRadius: 10,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 14,
     width: 270,
     height: 55,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   PwdContainer: {
     marginLeft: 60,
     marginTop: 1,
   },
   Pwd: {
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: "Inter-SemiBold",
     fontSize: 14,
     marginTop: 5,
     marginLeft: 2,
-    color: 'white',
+    color: "white",
   },
 });
 
