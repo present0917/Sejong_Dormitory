@@ -2,6 +2,7 @@ package sd_back.demo.controller.reservation;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import sd_back.demo.domain.Member;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,6 @@ public class ReservationForm {
     private int time;
 
     @NotNull
-    private int StudentId;
+    private Member member;
 
 }

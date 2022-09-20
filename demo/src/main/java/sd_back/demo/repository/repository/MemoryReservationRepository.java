@@ -1,4 +1,4 @@
-package sd_back.demo.repository.calender;
+package sd_back.demo.repository.repository;
 
 import org.springframework.stereotype.Repository;
 import sd_back.demo.domain.Reservation;
@@ -46,10 +46,10 @@ public class MemoryReservationRepository implements ReservationRepository {
 
 
     @Override
-    public List<Reservation> findByStudentId(int studentId) {
+    public List<Reservation> findByStudentId(int memberId) {
 
         return store.values().stream()
-                .filter(reservation -> Objects.equals(reservation.getStudentId(), studentId))
+                .filter(reservation -> Objects.equals(reservation.getMember().getId(), memberId))
                 .collect(Collectors.toList());
     }
 

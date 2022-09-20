@@ -2,25 +2,34 @@ package sd_back.demo.domain;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "reservation")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation { //==calender
+public class Reservation {
 
-    Long id;
-    LocalDate date; //2022-09-16 형식
-    int time; //9, 11, 13, 15, 17, 19만 받을 수 있음
-    boolean isReservation;
-    int studentId; //Member table의 외래키
+    @Id
+    @GeneratedValue
+    private Long id;
+    private LocalDate date; //2022-09-16 형식
+    private int time; //9~19
+
+    @ManyToOne //단방향 관계
+    @JoinColumn(name = "member_id")
+    private Member member; //Member table의 외래키
 
 
-    public Reservation(LocalDate date, int time, boolean isReservation, int studentId) {
+    public Reservation(LocalDate date, int time, Member member) {
         this.date = date;
         this.time = time;
-        this.isReservation = isReservation;
-        this.studentId = studentId;
+        //this.member. = memberId;
+        //this.getMember().setId((long) memberId);
+        this.member = member;
     }
+
 }

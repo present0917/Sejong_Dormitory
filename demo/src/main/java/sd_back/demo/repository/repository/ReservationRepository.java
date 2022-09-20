@@ -1,4 +1,4 @@
-package sd_back.demo.repository.calender;
+package sd_back.demo.repository.repository;
 
 import sd_back.demo.domain.Reservation;
 
