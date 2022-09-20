@@ -14,6 +14,15 @@ public class MemberService {
     //private final MemoryMemberRepository memberRepository;
     private final JpaMemberRepository memberRepository;
 
+    public Member findById(Long id) {
+        Optional<Member> member = memberRepository.findById(id);
+        if (member.isEmpty()){
+            return null;
+        }
+        else{
+            return member.get();
+        }
+    }
     public Member login(Long studentId, String password) { //로그인
 
         //Member member = memberRepository.findById(id).orElseThrow(() -> new NoSuchElementException("해당하는 id가 없습니다."));
