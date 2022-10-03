@@ -36,12 +36,10 @@ public class ReservationController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-
         Reservation saveReservation = reservationService.saveReservation(form.getDate(), form.getTime(), form.getMember());
         if (saveReservation == null) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -49,18 +47,14 @@ public class ReservationController {
     @GetMapping("/reservation/{memberId}") //json list로 반환하는 방법 찾아서 고치기!!
     public ResponseEntity reservationList(@PathVariable Long memberId){ //해당 학생의 예약 리스트 json으로 보내주기
         Optional<Member> member = Optional.ofNullable(memberService.findById(memberId));
-
         if (member.isEmpty()) {
             return null;
         }
         List<Reservation> list = reservationService.findReservationListOfMember(member.get());
 
-
         if (list.isEmpty()) {
             return new ResponseEntity("null",HttpStatus.OK);
         }
-
         return new ResponseEntity(HttpStatus.OK);
     }
-
 }
