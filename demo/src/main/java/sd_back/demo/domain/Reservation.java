@@ -18,7 +18,6 @@ public class Reservation {
     private Long id;
     private LocalDate date; //2022-09-16 형식
     private int time; //9~19
-
     @ManyToOne //단방향 관계
     @JoinColumn(name = "member_id")
     private Member member; //Member table의 외래키

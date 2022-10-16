@@ -24,11 +24,6 @@ public class MemberService {
         }
     }
     public Member login(Long studentId, String password) { //로그인
-
-        //Member member = memberRepository.findById(id).orElseThrow(() -> new NoSuchElementException("해당하는 id가 없습니다."));
-        //Optional<Member> findMemberOptional = memberRepository.findByStudentId(studentId);
-        //Member member = findMemberOptional.get();
-
         Optional<Member> findMember = memberRepository.findByStudentId(studentId);
         Member member = findMember.get();
 

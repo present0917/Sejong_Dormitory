@@ -13,12 +13,10 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ReservationService {
-
     //private final MemoryReservationRepository reservationRepository;
     private final JpaReservationRepository reservationRepository;
 
     public Reservation saveReservation(LocalDate date, int time, Member member){ //예약
-
         Reservation reservation = new Reservation(date, time, member);
         Optional<Reservation> findReservation = reservationRepository.findByDateAndTime(date, time);
 
@@ -26,7 +24,6 @@ public class ReservationService {
             reservationRepository.save(reservation);
             return reservation;
         }
-
         return null;
     }
 
