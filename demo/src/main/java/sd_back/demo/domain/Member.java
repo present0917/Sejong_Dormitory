@@ -18,9 +18,7 @@ public class Member {
     private Long id;
     @Column
     private Long studentId;
-
     private String name;
-
     private String password;
 
     public Member(Long studentId, String name, String password) {

@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface MemberRepository {
     Member save(Member memeber); //저장
-    
     //조회
     Optional<Member> findById(Long id);
     Optional<Member> findByStudentId(Long studentId);

@@ -20,10 +20,8 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class ReservationController {
-
     private final ReservationService reservationService;
     private final MemberService memberService;
-
     @GetMapping("/reservation")
     public String reservationForm() {
         return null;

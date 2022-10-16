@@ -9,10 +9,7 @@ import sd_back.demo.service.QRCodeService;
 
 @RestController
 public class QRCodeController {
-
     private static final String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
-
-
     @GetMapping(value = "/genrateAndDownloadQRCode/{codeText}/{width}/{height}")
     public void download(
             @PathVariable("codeText") String codeText,

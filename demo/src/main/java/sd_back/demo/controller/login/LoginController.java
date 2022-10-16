@@ -86,9 +86,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             //return "login/loginForm";
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-
         }
-
         Member loginMember = memberService.login(form.getLoginId(), form.getPassword());
 
         if (loginMember == null) { //로그인 실패
@@ -98,11 +96,9 @@ public class LoginController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         log.debug(""+loginMember.getStudentId());
-
         //로그인 성공
         Cookie idCookie = new Cookie("memberId", String.valueOf(loginMember.getId()));
         response.addCookie(idCookie);
-
         //return 200;
         return new ResponseEntity(HttpStatus.OK);
     }
