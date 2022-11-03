@@ -32,7 +32,7 @@ public class ReservationService {
     }
 
     public List<Reservation> findReservationListOfMember(Member member){ //해당 학생 예약만 조회
-        List<Reservation> list = reservationRepository.findByMemberId(member);
+        List<Reservation> list = reservationRepository.findByMemberId(member.getId());
 
 
         if (list.isEmpty()) { //해당 학생의 예약 정보가 없음

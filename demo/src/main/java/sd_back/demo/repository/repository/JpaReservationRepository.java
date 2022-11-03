@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface JpaReservationRepository extends JpaRepository<Reservation, Integer> {
     Optional<Reservation> findByDateAndTime(LocalDate date, int time);//date의 해당 time 예약 정보 반환
-    List<Reservation> findByMemberId(Member member);
+    List<Reservation> findByMemberId(long memberId);
     @Modifying(clearAutomatically = true)
     @Query("update Reservation m set m.date = :date, m.time=:time")
     Optional<Reservation> Update(@Param("date") LocalDate date, @Param("time") int time);
