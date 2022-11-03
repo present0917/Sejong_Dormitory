@@ -43,16 +43,16 @@ public class ReservationController {
 
     @ResponseBody
     @GetMapping("/reservation/{memberId}") //json list로 반환하는 방법 찾아서 고치기!!
-    public ResponseEntity reservationList(@PathVariable Long memberId){ //해당 학생의 예약 리스트 json으로 보내주기
-        Optional<Member> member = Optional.ofNullable(memberService.findById(memberId));
+    public List<Reservation> reservationList(@PathVariable int memberId){ //해당 학생의 예약 리스트 json으로 보내주기
+        Optional<Member> member = Optional.ofNullable(memberService.findById((long)memberId));
         if (member.isEmpty()) {
             return null;
         }
         List<Reservation> list = reservationService.findReservationListOfMember(member.get());
 
         if (list.isEmpty()) {
-            return new ResponseEntity("null",HttpStatus.OK);
+            return null;
         }
-        return new ResponseEntity(HttpStatus.OK);
+        return list;
     }
 }
