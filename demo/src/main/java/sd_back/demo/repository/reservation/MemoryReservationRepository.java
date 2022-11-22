@@ -1,4 +1,4 @@
-package sd_back.demo.repository.repository;
+package sd_back.demo.repository.reservation;
 
 import org.springframework.stereotype.Repository;
 import sd_back.demo.domain.Reservation;
