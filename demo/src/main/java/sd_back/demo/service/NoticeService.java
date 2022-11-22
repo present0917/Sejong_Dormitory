@@ -15,10 +15,18 @@ import java.util.Optional;
 public class NoticeService {
     private final JpaNoticeRepository noticeRepository;
 
+    public boolean isManager(int memberid){
+        if (memberid == 1) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public Notice createNotice(String title, String content, LocalDateTime dateTime, Member member) { //공지사항 생성
         Notice notice = new Notice(title, content, dateTime, member);
         noticeRepository.save(notice);
-
         return notice;
     }
 
