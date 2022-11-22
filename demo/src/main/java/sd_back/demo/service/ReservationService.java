@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sd_back.demo.domain.Member;
 import sd_back.demo.domain.Reservation;
-import sd_back.demo.repository.repository.JpaReservationRepository;
+import sd_back.demo.repository.reservation.JpaReservationRepository;
 
 import java.time.LocalDate;
 import java.util.List;
