@@ -44,17 +44,18 @@ public class ReservationController {
 
     @ResponseBody
     @GetMapping("/reservation/{memberId}")
-    public List<Reservation> reservationList(@PathVariable int memberId) { //해당 학생의 예약 리스트 json으로 보내주기
+    public ResponseEntity reservationList(@PathVariable int memberId) { //해당 학생의 예약 리스트 json으로 보내주기
         Optional<Member> member = Optional.ofNullable(memberService.findById((long) memberId));
         if (member.isEmpty()) {
-            return null;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         List<Reservation> list = reservationService.findReservationListOfMember(member.get());
 
         if (list.isEmpty()) {
-            return null;
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
         }
-        return list;
+        return new ResponseEntity(list, HttpStatus.OK);
     }
 
     @DeleteMapping("/reservation")
