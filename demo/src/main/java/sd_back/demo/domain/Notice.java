@@ -19,7 +19,7 @@ public class Notice {
     @GeneratedValue
     int id;
 
-    String text;
+    String title;
     String content;
     LocalDateTime dateTime;
 
@@ -27,8 +27,8 @@ public class Notice {
     @JoinColumn(name = "member_id")
     private Member member; //Member table의 외래키
 
-    public Notice(String text, String content, LocalDateTime dateTime, Member member) {
-        this.text = text;
+    public Notice(String title, String content, LocalDateTime dateTime, Member member) {
+        this.title = title;
         this.content = content;
         this.dateTime = dateTime;
         this.member = member;
