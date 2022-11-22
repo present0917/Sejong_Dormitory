@@ -41,7 +41,7 @@ public class ReservationService {
         return list;
     }
     
-    public Reservation updateReservation(LocalDate date, int time, int id){ //예약 수정
+    public Reservation updateReservation(LocalDate date, int time, int id){ //예약 수정 -> 사용 X
         Optional<Reservation> findReservation = reservationRepository.findById(id);
         if (findReservation.isEmpty()) { //해당 예약 정보가 없음
             return null;
@@ -51,16 +51,9 @@ public class ReservationService {
         return findReservation.get();
     }
 
-    public Reservation cancelReservation(LocalDate date, int time, Member member) { //예약 취소
-        Reservation reservation = new Reservation(date, time, member);
-        Optional<Reservation> findReservation = reservationRepository.findByDateAndTime(date, time);
-
-        if (findReservation.isEmpty()) { //해당 예약 정보가 없다면
-            return null;
-        }
-
-        reservationRepository.delete(findReservation.get());
-
-        return findReservation.get();
+    public boolean cancelReservation(LocalDate date, int time) { //예약 취소
+        Optional<Reservation> reservation = reservationRepository.findByDateAndTime(date, time);
+        reservationRepository.delete(reservation.get());
+        return true;
     }
 }

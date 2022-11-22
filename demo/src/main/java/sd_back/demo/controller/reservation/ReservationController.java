@@ -22,9 +22,10 @@ import java.util.Optional;
 public class ReservationController {
     private final ReservationService reservationService;
     private final MemberService memberService;
+
     @GetMapping("/reservation")
-    public String reservationForm() {
-        return null;
+    public ResponseEntity reservationForm() {
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @ResponseBody
@@ -42,9 +43,9 @@ public class ReservationController {
     }
 
     @ResponseBody
-    @GetMapping("/reservation/{memberId}") //json list로 반환하는 방법 찾아서 고치기!!
-    public List<Reservation> reservationList(@PathVariable int memberId){ //해당 학생의 예약 리스트 json으로 보내주기
-        Optional<Member> member = Optional.ofNullable(memberService.findById((long)memberId));
+    @GetMapping("/reservation/{memberId}")
+    public List<Reservation> reservationList(@PathVariable int memberId) { //해당 학생의 예약 리스트 json으로 보내주기
+        Optional<Member> member = Optional.ofNullable(memberService.findById((long) memberId));
         if (member.isEmpty()) {
             return null;
         }
@@ -54,5 +55,17 @@ public class ReservationController {
             return null;
         }
         return list;
+    }
+
+    @DeleteMapping("/reservation")
+    public ResponseEntity cancleReservation(@Valid @RequestBody ReservationForm form, BindingResult bindingResult) { //예약 취소
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity((HttpStatus.BAD_REQUEST));
+        }
+        if(reservationService.cancelReservation(form.getDate(), form.getTime())){
+            return new ResponseEntity(HttpStatus.OK);
+        }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }
