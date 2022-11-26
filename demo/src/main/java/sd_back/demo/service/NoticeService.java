@@ -59,12 +59,12 @@ public class NoticeService {
         return notice;
     }
 
-    public Notice findNoticeById(int id) {
+    public Optional<Notice> findNoticeById(int id) {
         Optional<Notice> notice = noticeRepository.findById(id);
 
         if (notice.isEmpty()) {
             return null;
         }
-        else return notice.get();
+        else return notice;
     }
 }
