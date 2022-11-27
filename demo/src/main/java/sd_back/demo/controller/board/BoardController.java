@@ -37,7 +37,7 @@ public class BoardController {
     }
 
     @ResponseBody
-    @PostMapping("/board")//게시판 생성
+    @PostMapping("/board")//게시글 생성
     public ResponseEntity saveBoard(@Valid @RequestBody BoardForm form, BindingResult bindingResult) {
         boardService.createBoard(form.title, form.content, form.date_time, form.member);
         return new ResponseEntity(HttpStatus.OK);
@@ -45,7 +45,7 @@ public class BoardController {
 
     @ResponseBody
     @GetMapping("/board/{id}")
-    public ResponseEntity getBoardById(@PathVariable int id) { //공지사항 상세 내용
+    public ResponseEntity getBoardById(@PathVariable int id) { //게시글 상세 내용
         Optional<Board> board = boardService.findBoardById(id);
 
         if (board.isEmpty()) {
@@ -56,7 +56,7 @@ public class BoardController {
     }
 
     @ResponseBody
-    @PutMapping("/board/{id}") //게시판 업데이트
+    @PutMapping("/board/{id}") //게시글 업데이트
     public ResponseEntity updateBoard(@PathVariable int id, @Valid @RequestBody BoardForm form, BindingResult bindingResult) {
         Optional<Board> board = boardService.updateBoard(id, form.title, form.content, form.date_time);
 
@@ -69,7 +69,7 @@ public class BoardController {
 
     @ResponseBody
     @DeleteMapping("/board/{id}")
-    public ResponseEntity deleteBoard(@PathVariable int id) { //게시판 삭제
+    public ResponseEntity deleteBoard(@PathVariable int id) { //게시글 삭제
         if(!boardService.deleteBoard(id)){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
