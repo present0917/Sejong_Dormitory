@@ -41,19 +41,23 @@ public class ReservationService {
         return list;
     }
     
-    public Reservation updateReservation(LocalDate date, int time, int id){ //예약 수정 -> 사용 X
-        Optional<Reservation> findReservation = reservationRepository.findById(id);
-        if (findReservation.isEmpty()) { //해당 예약 정보가 없음
-            return null;
+//    public Reservation updateReservation(LocalDate date, int time, int id){ //예약 수정 -> 사용 X
+//        Optional<Reservation> findReservation = reservationRepository.findById(id);
+//        if (findReservation.isEmpty()) { //해당 예약 정보가 없음
+//            return null;
+//        }
+//        findReservation = reservationRepository.Update(date, time, id);
+//
+//        return findReservation.get();
+//    }
+
+    public boolean deleteById(int id) { //예약 취소
+        Optional<Reservation> reservation = reservationRepository.findById(id);
+        if (reservation.isEmpty()) {
+            return false;
         }
-        findReservation = reservationRepository.Update(date, time);
+        reservationRepository.deleteById(id);
 
-        return findReservation.get();
-    }
-
-    public boolean cancelReservation(LocalDate date, int time) { //예약 취소
-        Optional<Reservation> reservation = reservationRepository.findByDateAndTime(date, time);
-        reservationRepository.delete(reservation.get());
         return true;
     }
 }

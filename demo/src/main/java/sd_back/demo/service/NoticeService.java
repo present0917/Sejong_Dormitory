@@ -43,7 +43,7 @@ public class NoticeService {
         if (notice.isEmpty()) {
             return false;
         }
-        noticeRepository.delete(notice.get());
+        noticeRepository.deleteById(id);
         return true;
     }
 
@@ -54,7 +54,10 @@ public class NoticeService {
         }
         notice.get().setTitle(title);
         notice.get().setContent(content);
-        notice.get().setDateTime(dateTime);
+        notice.get().setDate_time(dateTime);
+
+        noticeRepository.updateNotice(title, content, dateTime, id);
+
 
         return notice;
     }

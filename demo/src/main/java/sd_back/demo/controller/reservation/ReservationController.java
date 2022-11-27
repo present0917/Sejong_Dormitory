@@ -58,15 +58,12 @@ public class ReservationController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @DeleteMapping("/reservation")
-    public ResponseEntity cancleReservation(@Valid @RequestBody ReservationForm form, BindingResult bindingResult) { //예약 취소
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity((HttpStatus.BAD_REQUEST));
+    @ResponseBody
+    @DeleteMapping("/reservation/{id}")
+    public ResponseEntity deleteReservation(@PathVariable int id) { //예약 취소
+        if(!reservationService.deleteById(id)){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-        if(reservationService.cancelReservation(form.getDate(), form.getTime())){
-            return new ResponseEntity(HttpStatus.OK);
-        }
-
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

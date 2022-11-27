@@ -15,7 +15,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
     private LocalDate date; //2022-09-16 형식
     private int time; //9~19
     @ManyToOne //단방향 관계

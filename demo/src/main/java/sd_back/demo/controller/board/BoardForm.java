@@ -1,15 +1,15 @@
-package sd_back.demo.controller.notice;
+package sd_back.demo.controller.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 import sd_back.demo.domain.Member;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
-public class NoticeForm {
+public class BoardForm {
+
     @NotNull
     String title;
     @NotNull
