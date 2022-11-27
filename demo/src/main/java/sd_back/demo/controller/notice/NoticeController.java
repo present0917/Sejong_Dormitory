@@ -21,7 +21,7 @@ import java.util.Optional;
 public class NoticeController {
 
     private final NoticeService noticeService;
-    private final MemberService memberService;
+    //private final MemberService memberService;
 
     @GetMapping("/notice")//공지사항 전체 리스트(초기 화면)
     public ResponseEntity<List<Notice>> noticeList() {
@@ -36,7 +36,7 @@ public class NoticeController {
     @ResponseBody
     @PostMapping("/notice")//공지사항 생성
     public ResponseEntity saveNotice(@Valid @RequestBody NoticeForm form, BindingResult bindingResult) {
-        noticeService.createNotice(form.title, form.content, form.dateTime, form.member);
+        noticeService.createNotice(form.title, form.content, form.date_time, form.member);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -55,7 +55,7 @@ public class NoticeController {
     @ResponseBody
     @PutMapping("/notice/{id}") //공지사항 업데이트
     public ResponseEntity updateNotice(@PathVariable int id, @Valid @RequestBody NoticeForm form, BindingResult bindingResult) {
-        Optional<Notice> notice = noticeService.updateNotice(id, form.title, form.content, form.dateTime);
+        Optional<Notice> notice = noticeService.updateNotice(id, form.title, form.content, form.date_time);
 
         if (notice.isEmpty()) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
